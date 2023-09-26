@@ -1,3 +1,4 @@
 [submodule "mimosa"]
 	path = mimosa
-	url = ../mimosa
+	url = https://github.com/abique/mimosa.git
+
