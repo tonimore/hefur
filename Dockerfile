@@ -34,12 +34,22 @@ RUN    mkdir build && \
 FROM debian:11-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
+
+ARG USERNAME
+ARG USERID
+ARG GROUPID
+
 RUN \
   apt-get update && \
   apt-get install -y libprotobuf23 && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/
 
+# Добавляем пользователя
+RUN groupadd --gid $GROUPID $USERNAME && \
+    useradd --uid $USERID --gid $GROUPID -m $USERNAME
+
 COPY --from=0 /src/build/build-root/ /
 
 EXPOSE 6969
+USER $USERNAME
