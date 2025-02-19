@@ -53,3 +53,6 @@ COPY --from=0 /src/build/build-root/ /
 
 EXPOSE 6969
 USER $USERNAME
+
+#ENTRYPOINT ["/usr/bin/hefurd", "-http-port", "6969", "-udp-port", "0", "-https-port", "0", "-torrent-dir", "/torrents", "-scan-interval", "60", "-max-peers", "1024", "-allow-proxy", "-log-level", "warn", "-log-file", "/tmp/hefur.log", "-min-numwant", "2000", "-max-numwant", "2000"]
+ENTRYPOINT ["/usr/bin/hefurd", "-http-port", "6969", "-udp-port", "0", "-https-port", "0", "-torrent-dir", "/torrents", "-scan-interval", "60", "-max-peers", "1024", "-allow-proxy", "-log-level", "info", "-min-numwant", "2000", "-max-numwant", "2000"]
